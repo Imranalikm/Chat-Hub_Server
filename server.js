@@ -13,7 +13,11 @@ const path = require("path");
 dbConnect();
 const app = express();
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: 'https://chat-hub-client.vercel.app',
+};
+
+app.use(cors(corsOptions));
 // Main routes
 app.use("/api/users", userRoutes);
 app.use("/api/chats", chatRoutes);
